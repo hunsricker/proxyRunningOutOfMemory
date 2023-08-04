@@ -3,7 +3,6 @@ package com.jambit;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Nullable;
-import io.micronaut.core.async.publisher.Publishers;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.MutableHttpResponse;
@@ -65,14 +64,12 @@ public class RequestController {
             originRequest.getHeaders().forEach((header, value) -> LOG.trace("[Header] {}: {}", header, value));
         }
 
-        LOG.error(Thread.currentThread().toString());
-        final Publisher<MutableHttpResponse<?>> response = proxyHttpClient.proxy(originRequest.mutate()
+        return proxyHttpClient.proxy(originRequest.mutate()
                 .uri(targetUri)
                 .body(
                         createMultipartBodyBuilder(enrichedData, testEventCode)
                 )
         );
-        return response;
     }
 
     private MultipartBody.Builder createMultipartBodyBuilder(

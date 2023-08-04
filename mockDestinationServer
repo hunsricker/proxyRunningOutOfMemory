@@ -1,4 +1,4 @@
-#! /Users/akreutze/.sdkman/candidates/java/20.0.1-graalce/bin/java --source 20 --enable-preview
+#! <JAVA_HOME>/bin/java --source 20 --enable-preview
 
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpServer;
@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.function.IntFunction;
 
-public enum HelloWorld {
+public enum DestinationServerMock {
     ;
 
     private final static Random RANDOM = new Random();

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="ERROR">
+<Configuration status="warn">
     <Appenders>
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
     </Appenders>
+    <Appenders>
+        <File name="LogToFile" fileName="app.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
     <Loggers>
-        <Logger name="com.jambit" level="error" additivity="false">
-            <AppenderRef ref="LogToConsole"/>
+        <Logger name="com.jambit" level="warn" additivity="false">
+            <AppenderRef ref="LogToFile"/>
         </Logger>
-        <Root level="error">
-            <AppenderRef ref="LogToConsole"/>
+        <Root level="warn">
+            <AppenderRef ref="LogToFile"/>
         </Root>
     </Loggers>
 </Configuration>
